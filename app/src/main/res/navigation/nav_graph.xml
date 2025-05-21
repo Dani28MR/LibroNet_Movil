@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/librosFragment">
+
+    <fragment
+        android:id="@+id/librosFragment"
+        android:name="movil.libronet.vista.LibrosFragment"
+        android:label="fragment_libros"
+        tools:layout="@layout/fragment_libros" >
+        <action
+            android:id="@+id/action_librosFragment_to_detalleLibrosFragment"
+            app:destination="@id/detalleLibrosFragment" />
+        <action
+            android:id="@+id/action_librosFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleLibrosFragment"
+        android:name="movil.libronet.vista.DetalleLibrosFragment"
+        android:label="fragment_detalle_libros"
+        tools:layout="@layout/fragment_detalle_libros" >
+        <action
+            android:id="@+id/action_detalleLibrosFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/errorFragment"
+        android:name="movil.libronet.vista.ErrorFragment"
+        tools:layout="@layout/fragment_error"
+        android:label="ErrorFragment" >
+        <argument
+            android:name="mensajeError"
+            app:argType="string" />
+    </fragment>
+</navigation>
