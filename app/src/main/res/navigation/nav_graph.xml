@@ -11,9 +11,6 @@
         android:label="fragment_libros"
         tools:layout="@layout/fragment_libros" >
         <action
-            android:id="@+id/action_librosFragment_to_detalleLibrosFragment"
-            app:destination="@id/detalleLibrosFragment" />
-        <action
             android:id="@+id/action_librosFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
     </fragment>
@@ -34,5 +31,68 @@
         <argument
             android:name="mensajeError"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editorialFragment"
+        android:name="movil.libronet.vista.EditorialFragment"
+        android:label="fragment_editorial"
+        tools:layout="@layout/fragment_editorial" >
+        <action
+            android:id="@+id/action_editorialFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleUsuarioFragment"
+        android:name="movil.libronet.vista.DetalleUsuarioFragment"
+        android:label="fragment_detalle_usuario"
+        tools:layout="@layout/fragment_detalle_usuario" >
+        <action
+            android:id="@+id/action_detalleUsuarioFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/autorFragment"
+        android:name="movil.libronet.vista.AutorFragment"
+        android:label="fragment_autor"
+        tools:layout="@layout/fragment_autor" >
+        <action
+            android:id="@+id/action_autorFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleAutorFragment"
+        android:name="movil.libronet.vista.DetalleAutorFragment"
+        android:label="fragment_detalle_autor"
+        tools:layout="@layout/fragment_detalle_autor" >
+        <action
+            android:id="@+id/action_detalleAutorFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleEditorialFragment"
+        android:name="movil.libronet.vista.DetalleEditorialFragment"
+        android:label="fragment_detalle_editorial"
+        tools:layout="@layout/fragment_detalle_editorial" >
+        <action
+            android:id="@+id/action_detalleEditorialFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriaFragment"
+        android:name="movil.libronet.vista.CategoriaFragment"
+        android:label="fragment_categoria"
+        tools:layout="@layout/fragment_categoria" >
+        <action
+            android:id="@+id/action_categoriaFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleCategoriaFragment"
+        android:name="movil.libronet.vista.DetalleCategoriaFragment"
+        android:label="fragment_detalle_categoria"
+        tools:layout="@layout/fragment_detalle_categoria" >
+        <action
+            android:id="@+id/action_detalleCategoriaFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
     </fragment>
 </navigation>

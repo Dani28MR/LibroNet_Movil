@@ -53,13 +53,17 @@ class LibrosFragment : Fragment(), NavegadorError{
         viewModel = ViewModelProvider(this).get(LibrosViewModel::class.java)
     }
 
-    fun test(){
+    fun test() {
         lifecycleScope.launch {
-            viewModel.rellenarListaLibros(
-                {Log.d("test", "Lista de libros cargada: ${viewModel.listaLibros}")},
-                { error -> Log.d("test", "Error al cargar la lista de libros: ${error}")}
-            )
+            val editoriales = LibroNetRepository().consultarTodasEditoriales()
+            editoriales.forEach { categoria ->
+                Log.d("pruebaa", categoria.toString())
+            }
 
+            val autores = LibroNetRepository().consultarTodosAutores()
+            autores.forEach { autor ->
+                Log.d("pruebaa", autor.toString())
+            }
         }
     }
 
