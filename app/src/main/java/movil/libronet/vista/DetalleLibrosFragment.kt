@@ -12,9 +12,11 @@ import androidx.navigation.fragment.findNavController
 import movil.libronet.R
 import movil.libronet.databinding.FragmentDetalleLibrosBinding
 import movil.libronet.databinding.FragmentLibrosBinding
+import movil.libronet.modelo.Libro
 import movil.libronet.viewmodel.DetalleLibrosViewModel
 
 class DetalleLibrosFragment : Fragment(), NavegadorError {
+    var libro: Libro ?= null
     lateinit var viewModel:DetalleLibrosViewModel
     var _binding: FragmentDetalleLibrosBinding?=null
     val binding: FragmentDetalleLibrosBinding
@@ -34,10 +36,22 @@ class DetalleLibrosFragment : Fragment(), NavegadorError {
     ): View? {
         iniciarBinding(inflater,container)
         inicializarViewModel()
-
+        inicializarInterfaz()
 
         return binding.root
     }
+
+    fun inicializarInterfaz(){
+        val l = DetalleLibrosFragmentArgs.fromBundle(requireArguments()).libroSeleccionado
+        libro = l
+        binding.txtTitulo.setText(l.titulo)
+        binding.txtISBN.setText(l.ISBN)
+        binding.txtDescripcion.setText(l.descripcion)
+        binding.txtTotalCopias.setText(l.totalCopias.toString())
+        binding.txtTotalCopiasDisponibles.setText(l.copiasDisponibles.toString())
+    }
+
+
     private fun iniciarBinding(inflater: LayoutInflater,container: ViewGroup?){
         _binding = FragmentDetalleLibrosBinding.inflate(inflater,container,false)
     }

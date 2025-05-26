@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/perfilUsuario"
-        android:icon="@drawable/logopersona"
-        android:title="Perfil"
+        android:id="@+id/detalleUsuarioFragment"
+        android:icon="@drawable/icono_persona"
+        android:title="Mi Perfil"
         app:showAsAction="always" />
 </menu>

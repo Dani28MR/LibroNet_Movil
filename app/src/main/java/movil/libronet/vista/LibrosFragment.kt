@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import movil.libronet.R
@@ -40,10 +43,14 @@ class LibrosFragment : Fragment(), NavegadorError{
         savedInstanceState: Bundle?
     ): View? {
         iniciarBinding(inflater,container)
+        configurarNavigationDrawer()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         inicializarViewModel()
         inicializarInterfaz()
-        test()
-        return binding.root
     }
 
     private fun iniciarBinding(inflater: LayoutInflater,container: ViewGroup?){
@@ -66,12 +73,27 @@ class LibrosFragment : Fragment(), NavegadorError{
             }
         }
     }
+    private fun configurarNavigationDrawer(){
+        NavigationUI.setupWithNavController(binding.navigationView, navController)
+
+    }
 
     fun mostrarToolbar(b:Boolean){
         val mainActivity = activity as MainActivity
         mainActivity.binding.materialToolbar.visibility =
             if (b) View.VISIBLE else View.GONE
+
+
+        val navController = navController
+        val configuracion = AppBarConfiguration
+            .Builder(setOf(R.id.librosFragment,R.id.autorFragment,R.id.editorialFragment,R.id.categoriaFragment))
+            .setOpenableLayout(binding.navigationDrawer)
+            .build()
+        NavigationUI.setupWithNavController(binding.materialToolbar,navController,configuracion)
+
     }
+
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -84,6 +106,7 @@ class LibrosFragment : Fragment(), NavegadorError{
             inicializarInterfazPrincipal()
         }
     }
+
 
     fun inicializarSplashScreen(){
         lifecycleScope.launch {
@@ -105,11 +128,9 @@ class LibrosFragment : Fragment(), NavegadorError{
 
     private fun inicializarRecycleView(){
         val adapter = LibroAdapter(viewModel.listaLibros){ holder ->
-            Toast.makeText(
-                requireContext(),
-                "Seleccionado ${holder.libro.titulo}",
-                Toast.LENGTH_SHORT
-            ).show()
+            val flecha = LibrosFragmentDirections.
+            actionLibrosFragmentToDetalleLibrosFragment(holder.libro)
+            findNavController().navigate(flecha)
         }
         binding.lstLibros.adapter = adapter
     }

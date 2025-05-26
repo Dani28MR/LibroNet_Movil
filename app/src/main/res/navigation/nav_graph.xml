@@ -8,20 +8,26 @@
     <fragment
         android:id="@+id/librosFragment"
         android:name="movil.libronet.vista.LibrosFragment"
-        android:label="fragment_libros"
-        tools:layout="@layout/fragment_libros" >
+        android:label="Libros"
+        tools:layout="@layout/fragment_libros">
         <action
             android:id="@+id/action_librosFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <action
+            android:id="@+id/action_librosFragment_to_detalleLibrosFragment"
+            app:destination="@id/detalleLibrosFragment" />
     </fragment>
     <fragment
         android:id="@+id/detalleLibrosFragment"
         android:name="movil.libronet.vista.DetalleLibrosFragment"
-        android:label="fragment_detalle_libros"
-        tools:layout="@layout/fragment_detalle_libros" >
+        android:label="Libro seleccionado"
+        tools:layout="@layout/fragment_detalle_libros">
         <action
             android:id="@+id/action_detalleLibrosFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <argument
+            android:name="libroSeleccionado"
+            app:argType="movil.libronet.modelo.Libro" />
     </fragment>
     <fragment
         android:id="@+id/errorFragment"
@@ -35,56 +41,74 @@
     <fragment
         android:id="@+id/editorialFragment"
         android:name="movil.libronet.vista.EditorialFragment"
-        android:label="fragment_editorial"
-        tools:layout="@layout/fragment_editorial" >
+        android:label="Editoriales"
+        tools:layout="@layout/fragment_editorial">
         <action
             android:id="@+id/action_editorialFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <action
+            android:id="@+id/action_editorialFragment_to_detalleEditorialFragment"
+            app:destination="@id/detalleEditorialFragment" />
     </fragment>
     <fragment
         android:id="@+id/detalleUsuarioFragment"
         android:name="movil.libronet.vista.DetalleUsuarioFragment"
-        android:label="fragment_detalle_usuario"
-        tools:layout="@layout/fragment_detalle_usuario" >
+        android:label="Mi perfil"
+        tools:layout="@layout/fragment_detalle_usuario">
         <action
             android:id="@+id/action_detalleUsuarioFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <argument
+            android:name="idUsuarioLog"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/autorFragment"
         android:name="movil.libronet.vista.AutorFragment"
-        android:label="fragment_autor"
-        tools:layout="@layout/fragment_autor" >
+        android:label="Autores"
+        tools:layout="@layout/fragment_autor">
         <action
             android:id="@+id/action_autorFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <action
+            android:id="@+id/action_autorFragment_to_detalleAutorFragment"
+            app:destination="@id/detalleAutorFragment" />
     </fragment>
     <fragment
         android:id="@+id/detalleAutorFragment"
         android:name="movil.libronet.vista.DetalleAutorFragment"
-        android:label="fragment_detalle_autor"
-        tools:layout="@layout/fragment_detalle_autor" >
+        android:label="Autor seleccionado"
+        tools:layout="@layout/fragment_detalle_autor">
         <action
             android:id="@+id/action_detalleAutorFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <argument
+            android:name="autorSeleccionado"
+            app:argType="movil.libronet.modelo.Autor" />
     </fragment>
     <fragment
         android:id="@+id/detalleEditorialFragment"
         android:name="movil.libronet.vista.DetalleEditorialFragment"
-        android:label="fragment_detalle_editorial"
-        tools:layout="@layout/fragment_detalle_editorial" >
+        android:label="Editorial seleccionada"
+        tools:layout="@layout/fragment_detalle_editorial">
         <action
             android:id="@+id/action_detalleEditorialFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <argument
+            android:name="editorialSeleccionada"
+            app:argType="movil.libronet.modelo.Editorial" />
     </fragment>
     <fragment
         android:id="@+id/categoriaFragment"
         android:name="movil.libronet.vista.CategoriaFragment"
-        android:label="fragment_categoria"
-        tools:layout="@layout/fragment_categoria" >
+        android:label="Categorías"
+        tools:layout="@layout/fragment_categoria">
         <action
             android:id="@+id/action_categoriaFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <action
+            android:id="@+id/action_categoriaFragment_to_detalleCategoriaFragment"
+            app:destination="@id/detalleCategoriaFragment" />
     </fragment>
     <fragment
         android:id="@+id/detalleCategoriaFragment"
@@ -94,5 +118,8 @@
         <action
             android:id="@+id/action_detalleCategoriaFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <argument
+            android:name="categoriaSeleccionada"
+            app:argType="movil.libronet.modelo.Categoria" />
     </fragment>
 </navigation>

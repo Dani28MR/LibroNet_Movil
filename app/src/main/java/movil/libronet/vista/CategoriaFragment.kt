@@ -66,7 +66,7 @@ class CategoriaFragment : Fragment(), NavegadorError {
         val adapter = CategoriaAdapter(viewModel.listaCategoria){ holder ->
             Toast.makeText(
                 requireContext(),
-                "Seleccionado ${holder.categoria.nombreCategoria}",
+                "Has seleccionado la categoría ${holder.categoria.nombreCategoria}",
                 Toast.LENGTH_SHORT
             ).show()
         }

@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 import movil.libronet.R
 import movil.libronet.databinding.FragmentAutorBinding
@@ -56,12 +58,11 @@ class AutorFragment : Fragment(), NavegadorError {
 
     fun inicializarRecyclerView(){
         val adapter = AutorAdapter(viewModel.listaAutores){ holder ->
-            Toast.makeText(
-                requireContext(),
-                "Seleccionado ${holder.autor.nombreAutor}",
-                Toast.LENGTH_SHORT
-            ).show()
+            val flecha = AutorFragmentDirections.
+                actionAutorFragmentToDetalleAutorFragment(holder.autor)
+            findNavController().navigate(flecha)
         }
+        binding.lstAutores.layoutManager = LinearLayoutManager(requireContext())
         binding.lstAutores.adapter = adapter
     }
 }

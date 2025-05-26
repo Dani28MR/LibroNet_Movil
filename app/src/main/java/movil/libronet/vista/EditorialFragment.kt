@@ -57,11 +57,9 @@ class EditorialFragment : Fragment(), NavegadorError {
 
     fun inicializarRecyclerView(){
         val adapter = EditorialAdapter(viewModel.listaEditorial){ holder ->
-            Toast.makeText(
-                requireContext(),
-                "Seleccionado ${holder.editorial.nombreEditorial}",
-                Toast.LENGTH_SHORT
-            ).show()
+            val flecha = EditorialFragmentDirections.
+            actionEditorialFragmentToDetalleEditorialFragment(holder.editorial)
+            findNavController().navigate(flecha)
         }
         binding.lstEditoriales.adapter = adapter
     }

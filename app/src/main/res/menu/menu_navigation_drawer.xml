@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title=" ">
+        <menu android:checkableBehavior="single">
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/librosFragment"
+                    android:icon="@drawable/icono_libro"
+                    android:title="Libros"/>
+
+                <item
+                    android:id="@+id/autorFragment"
+                    android:icon="@drawable/icono_autor"
+                    android:title="Autores"/>
+
+                <item
+                    android:id="@+id/editorialFragment"
+                    android:icon="@drawable/icono_editorial"
+                    android:title="Editoriales"/>
+
+                <item
+                    android:id="@+id/categoriaFragment"
+                    android:icon="@drawable/icono_categoria"
+                    android:title="Categorias"/>
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/detalleUsuarioFragment"
+        android:icon="@drawable/icono_persona"
+        android:title="Mi perfil"/>
+
+</menu>
