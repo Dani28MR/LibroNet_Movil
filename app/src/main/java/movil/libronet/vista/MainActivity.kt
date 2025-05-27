@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -25,33 +27,58 @@ class MainActivity : AppCompatActivity() {
         configurarToolbar()
         configurarBottomNavigationBar()
         setContentView(binding.root)
+
+        val navController = getNavController()
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val ocultar = destination.id == R.id.loginFragment || destination.id == R.id.errorFragment
+
+            val visibilidad = if (ocultar) View.GONE else View.VISIBLE
+
+            binding.materialToolbar.visibility = visibilidad
+            binding.bottomNavigationBar.visibility = visibilidad
+            binding.navigationDrawer.setDrawerLockMode(
+                if (ocultar) DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+                else DrawerLayout.LOCK_MODE_UNLOCKED
+            )
+        }
     }
 
     fun inicializarBinding(){
         binding = ActivityMainBinding.inflate(layoutInflater)
     }
 
-
-
     fun configurarToolbar(){
         setSupportActionBar(binding.materialToolbar)
-        addMenuProvider(object:MenuProvider{
+
+        val navController = getNavController()
+
+        val appBarConfiguration = AppBarConfiguration.Builder(
+            setOf(
+                R.id.librosFragment,
+                R.id.autorFragment,
+                R.id.editorialFragment,
+                R.id.categoriaFragment
+            )
+        )
+            .setOpenableLayout(binding.navigationDrawer) // ahora es global
+            .build()
+
+        NavigationUI.setupWithNavController(binding.materialToolbar, navController, appBarConfiguration)
+        NavigationUI.setupWithNavController(binding.navigationView, navController) // drawer menu
+
+        // MenuProvider para la toolbar
+        addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_barra,menu)
+                menuInflater.inflate(R.menu.menu_barra, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                val navController = findNavController(R.id.fragment_container_view)
-                menuItem.onNavDestinationSelected(navController)
-
-                return true
+                return menuItem.onNavDestinationSelected(navController)
             }
         })
-
-        val navController = getNavController()
-        val configuracion = AppBarConfiguration.Builder(navController.graph).build()
-        NavigationUI.setupWithNavController(binding.materialToolbar,navController,configuracion)
     }
+
+
     private fun configurarBottomNavigationBar(){
         val navController = getNavController()
         NavigationUI.setupWithNavController(binding.bottomNavigationBar,navController)
@@ -61,6 +88,15 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragment_container_view) as NavHostFragment
         return navHostFragment.navController
+    }
+
+    fun mostrarElementosComunes(mostrar: Boolean) {
+        val visibilidad = if (mostrar) View.VISIBLE else View.GONE
+        binding.materialToolbar.visibility = visibilidad
+        binding.navigationDrawer.setDrawerLockMode(
+            if (mostrar) DrawerLayout.LOCK_MODE_UNLOCKED
+            else DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+        )
     }
 
 

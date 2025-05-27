@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/librosFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/librosFragment"
@@ -58,9 +58,6 @@
         <action
             android:id="@+id/action_detalleUsuarioFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
-        <argument
-            android:name="idUsuarioLog"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/autorFragment"
@@ -121,5 +118,17 @@
         <argument
             android:name="categoriaSeleccionada"
             app:argType="movil.libronet.modelo.Categoria" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="movil.libronet.vista.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_librosFragment"
+            app:destination="@id/librosFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
     </fragment>
 </navigation>

@@ -1,6 +1,8 @@
 package movil.libronet.vista
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +57,13 @@ class DetalleAutorFragment : Fragment(), NavegadorError {
         binding.txtApellidos.setText(a.apellidoAutor)
         binding.txtBiografia.setText(a.biografia)
         binding.txtNacionalidad.setText(a.nacionalidad)
+        try {
+            val imageBytes = Base64.decode(a.imagenAutor, Base64.DEFAULT)
+            val bitmap = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.size)
+            binding.imgAutor.setImageBitmap(bitmap)
+        }catch (e:Exception){
+            navegarError("Error en la lectura de la imágen")
+        }
     }
 
 

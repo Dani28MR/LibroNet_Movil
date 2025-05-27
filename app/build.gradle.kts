@@ -42,12 +42,14 @@ android {
 }
 
 dependencies {
+
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
 
     implementation ("androidx.navigation:navigation-fragment-ktx:2.8.5")
     implementation("com.squareup.moshi:moshi:1.15.1")
 
-    implementation ("org.mindrot:jbcrypt:0.4")
+    implementation("org.mindrot:jbcrypt:0.4")
+
     implementation("androidx.navigation:navigation-ui-ktx:2.8.5")
 
 

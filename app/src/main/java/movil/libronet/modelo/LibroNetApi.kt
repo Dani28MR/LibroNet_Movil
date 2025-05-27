@@ -13,7 +13,7 @@ interface LibroNetApi {
 
     @GET("libro/leer.php")
     suspend fun consultarLibro(
-        @Query("idLibro") id:Int
+        @Query("id") id:Int
     ):Libro
 
 
@@ -23,7 +23,7 @@ interface LibroNetApi {
 
     @GET("usuario/leer.php")
     suspend fun consultarUsuario(
-        @Query("idUsuario") id:Int
+        @Query("id") id:Int
     ):Usuario
 
     @PUT("usuario/actualizar.php")
@@ -38,7 +38,7 @@ interface LibroNetApi {
 
     @GET("categoria/leer.php")
     suspend fun consultarCategoria(
-        @Query("idCategoria") id:Int
+        @Query("id") id:Int
     ):Categoria
 
 
@@ -49,7 +49,7 @@ interface LibroNetApi {
 
     @GET("editorial/leer.php")
     suspend fun consultarEditorial(
-        @Query("idEditorial") id:Int
+        @Query("id") id:Int
     ):Editorial
 
     //AUTORES
@@ -58,7 +58,7 @@ interface LibroNetApi {
 
     @GET("autor/leer.php")
     suspend fun consultarAutor(
-        @Query("idEditorial") id:Int
+        @Query("id") id:Int
     ):Autor
 
 
@@ -68,7 +68,7 @@ interface LibroNetApi {
 
     @GET("reserva/leer.php")
     suspend fun consultarReserva(
-        @Query("idReserva") id: Int
+        @Query("id") id: Int
     ): Reserva
 
     @PUT("reserva/actualizar.php")
