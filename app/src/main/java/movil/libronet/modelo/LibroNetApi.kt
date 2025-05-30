@@ -2,6 +2,7 @@ package movil.libronet.modelo
 
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Query
 
@@ -75,4 +76,21 @@ interface LibroNetApi {
     suspend fun actualizarReserva(
         @Body reserva: Reserva
     ): Respuesta
+
+    @POST("reserva/insertar.php")
+    suspend fun insertarReserva(
+        @Body reserva: Reserva
+    ): Respuesta
+
+    @GET("reserva/verificar_reserva_activa.php")
+    suspend fun tieneReservaActiva(
+        @Query("idUsuario") idUsuario: Int,
+        @Query("idLibro") idLibro: Int
+    ): RespuestaReserva
+
+
+
+    //LIBRO_AUTOR
+    @GET("libroAutor/leer.php")
+    suspend fun consultarTodosLbrosAutor():List<Libro_Autor>
 }

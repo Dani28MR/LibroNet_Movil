@@ -1,5 +1,6 @@
 package movil.libronet.modelo
 
+import android.util.Log
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -48,5 +49,29 @@ class LibroNetRepository {
         libroNetApi.consultarTodosAutores()
     suspend fun consultarAutor(id: Int): Autor =
         libroNetApi.consultarAutor(id)
+
+
+    //LIBRO_AUTOR
+    suspend fun consultarTodosLibrosAutor():List<Libro_Autor> =
+        libroNetApi.consultarTodosLbrosAutor()
+
+
+    //RESERVAS
+    suspend fun consultarTodasReservas():List<Reserva> =
+        libroNetApi.consultarTodasReservas()
+
+    suspend fun tieneReservaActiva(idUsuario: Int, idLibro: Int): Boolean {
+        return try {
+            val respuesta = libroNetApi.tieneReservaActiva(idUsuario, idLibro)
+            respuesta.tieneReserva
+        } catch (e: Exception) {
+            Log.e("Repository", "Error verificando reserva", e)
+            false
+        }
+    }
+    suspend fun insertarReserva(reserva: Reserva): Respuesta {
+        return libroNetApi.insertarReserva(reserva)
+    }
+
 
 }

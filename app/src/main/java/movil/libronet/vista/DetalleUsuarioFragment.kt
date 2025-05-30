@@ -61,6 +61,8 @@ class DetalleUsuarioFragment : Fragment(), NavegadorError {
             binding.txtRol.setText(usuario.rol)
             binding.txtTelefono.setText(usuario.telefono)
             binding.txtDireccion.setText(usuario.direccion)
+            binding.txtPassword.setText(usuario.contraseña)
+            binding.txtConfirmacionPassword.setText(usuario.contraseña)
             try {
                 val imageBytes = Base64.decode(usuario.imagenUsuario, Base64.DEFAULT)
                 val bitmap = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.size)

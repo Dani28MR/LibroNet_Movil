@@ -12,7 +12,6 @@ data class Usuario(
     val imagenUsuario: String,
     val email: String,
     val contraseña: String,
-    val cofirmacionContraseña: String,
     val telefono: String,
     val direccion: String,
     val rol: String

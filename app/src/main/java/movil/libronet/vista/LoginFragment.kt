@@ -11,8 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import movil.libronet.R
 import movil.libronet.databinding.FragmentLoginBinding
@@ -72,26 +73,42 @@ class LoginFragment : Fragment(),NavegadorError {
                 Toast.makeText(requireContext(), "Debes ingresar email y contraseña", Toast.LENGTH_SHORT).show()
             } else {
                 viewModel.validarLogin(email, password)
+                binding.progressBar.visibility = View.VISIBLE
+                binding.btnIniciarSesion.visibility = View.GONE
             }
 
         }
         lifecycleScope.launch {
             viewModel.loginState.collect { result ->
                 when (result) {
+                    is LoginResult.Idle -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.btnIniciarSesion.visibility = View.VISIBLE
+                    }
                     is LoginResult.Success -> {
-                        val usuario = result.usuario
 
-                        sharedViewModel.setIdUsuario(usuario.idUsuario)
+                        sharedViewModel.setIdUsuario(result.usuario.idUsuario)
 
-                        findNavController().navigate(R.id.action_loginFragment_to_librosFragment)
+                        delay(2000)
+                        binding.progressBar.visibility = View.GONE
+                        findNavController().navigate(
+                            R.id.action_loginFragment_to_librosFragment,
+                            null,
+                            NavOptions.Builder()
+                                .setPopUpTo(R.id.loginFragment, inclusive = true)
+                                .build()
+                        )
                     }
 
                     is LoginResult.Error -> {
                         Toast.makeText(requireContext(), result.mensaje, Toast.LENGTH_SHORT).show()
+                        binding.progressBar.visibility = View.GONE
+                        binding.btnIniciarSesion.visibility = View.VISIBLE
                     }
 
                     is LoginResult.Loading -> {
-
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.btnIniciarSesion.visibility = View.GONE
                     }
                 }
             }

@@ -11,13 +11,14 @@ import movil.libronet.modelo.Usuario
 import org.mindrot.jbcrypt.BCrypt
 
 sealed class LoginResult {
+    object Idle : LoginResult()
     data class Success(val usuario: Usuario): LoginResult()
     data class Error(val mensaje: String): LoginResult()
     object Loading : LoginResult()
 }
 
 class LoginViewModel():ViewModel () {
-    private val _loginState = MutableStateFlow<LoginResult>(LoginResult.Loading)
+    private val _loginState = MutableStateFlow<LoginResult>(LoginResult.Idle)
     val loginState: StateFlow<LoginResult> get() = _loginState
 
     var listaUsuarios:List<Usuario> = emptyList()

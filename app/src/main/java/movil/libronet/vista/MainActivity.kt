@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.categoriaFragment
             )
         )
-            .setOpenableLayout(binding.navigationDrawer) // ahora es global
+            .setOpenableLayout(binding.navigationDrawer)
             .build()
 
         NavigationUI.setupWithNavController(binding.materialToolbar, navController, appBarConfiguration)

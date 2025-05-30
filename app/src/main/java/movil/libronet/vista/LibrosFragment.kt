@@ -53,7 +53,6 @@ class LibrosFragment : Fragment(), NavegadorError{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         inicializarViewModel()
-        inicializarInterfaz()
     }
 
     private fun iniciarBinding(inflater: LayoutInflater,container: ViewGroup?){
@@ -61,6 +60,12 @@ class LibrosFragment : Fragment(), NavegadorError{
     }
     private fun inicializarViewModel(){
         viewModel = ViewModelProvider(this).get(LibrosViewModel::class.java)
+        lifecycleScope.launch {
+            viewModel.rellenarListaLibros (
+                lambdaExito = { inicializarRecycleView()},
+                lambdaError = { m -> navegarError(m)}
+            )
+        }
     }
 
     override fun onDestroy() {
@@ -68,33 +73,6 @@ class LibrosFragment : Fragment(), NavegadorError{
         _binding = null
     }
 
-    fun inicializarInterfaz(){
-        if (viewModel.mostrarSplashScreen){
-            inicializarSplashScreen()
-        }else{
-            inicializarInterfazPrincipal()
-        }
-    }
-
-
-    fun inicializarSplashScreen(){
-        lifecycleScope.launch {
-            (activity as? MainActivity)?.mostrarElementosComunes(false)
-            viewModel.rellenarListaLibros(
-                lambdaExito = { inicializarInterfazPrincipal()},
-                lambdaError = { m -> navegarError(m)}
-            )
-        }
-    }
-    fun inicializarInterfazPrincipal(){
-        (activity as? MainActivity)?.mostrarElementosComunes(true)
-        binding.capa1.visibility = View.GONE
-        binding.capa2.visibility = View.VISIBLE
-        inicializarRecycleView()
-        viewModel.mostrarSplashScreen = false
-
-
-    }
 
     private fun inicializarRecycleView(){
         val adapter = LibroAdapter(viewModel.listaLibros){ holder ->

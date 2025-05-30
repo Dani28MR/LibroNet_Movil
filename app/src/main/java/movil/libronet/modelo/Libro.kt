@@ -10,7 +10,7 @@ data class Libro(
     val descripcion:String,
     val ISBN: String,
     val totalCopias: Int,
-    val copiasDisponibles: Int,
+    var copiasDisponibles: Int,
     val idCategoria: Int,
     val idEditorial: Int
 ):Serializable
