@@ -72,9 +72,12 @@ class LoginFragment : Fragment(),NavegadorError {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "Debes ingresar email y contraseña", Toast.LENGTH_SHORT).show()
             } else {
-                viewModel.validarLogin(email, password)
+                viewModel.setLoadingState()
+
                 binding.progressBar.visibility = View.VISIBLE
                 binding.btnIniciarSesion.visibility = View.GONE
+
+                viewModel.validarLogin(email, password)
             }
 
         }
@@ -82,15 +85,16 @@ class LoginFragment : Fragment(),NavegadorError {
             viewModel.loginState.collect { result ->
                 when (result) {
                     is LoginResult.Idle -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.btnIniciarSesion.visibility = View.VISIBLE
+                        updateUI(showProgress = false)
                     }
                     is LoginResult.Success -> {
 
                         sharedViewModel.setIdUsuario(result.usuario.idUsuario)
 
                         delay(2000)
-                        binding.progressBar.visibility = View.GONE
+
+                        updateUI(showProgress = false)
+
                         findNavController().navigate(
                             R.id.action_loginFragment_to_librosFragment,
                             null,
@@ -101,17 +105,23 @@ class LoginFragment : Fragment(),NavegadorError {
                     }
 
                     is LoginResult.Error -> {
+                        updateUI(showProgress = false)
                         Toast.makeText(requireContext(), result.mensaje, Toast.LENGTH_SHORT).show()
-                        binding.progressBar.visibility = View.GONE
-                        binding.btnIniciarSesion.visibility = View.VISIBLE
+                        viewModel.resetState()
                     }
 
                     is LoginResult.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.btnIniciarSesion.visibility = View.GONE
+                        updateUI(showProgress = true)
                     }
                 }
             }
+        }
+    }
+
+    private fun updateUI(showProgress: Boolean) {
+        binding.apply {
+            progressBar.visibility = if (showProgress) View.VISIBLE else View.GONE
+            btnIniciarSesion.visibility = if (showProgress) View.GONE else View.VISIBLE
         }
     }
 

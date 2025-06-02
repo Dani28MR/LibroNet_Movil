@@ -16,6 +16,10 @@ interface LibroNetApi {
     suspend fun consultarLibro(
         @Query("id") id:Int
     ):Libro
+    @PUT("libro/actualizar.php")
+    suspend fun actualizarLibro(
+        @Body libro: Libro
+    ):Respuesta
 
 
     //USUARIOS

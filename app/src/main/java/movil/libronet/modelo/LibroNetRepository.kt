@@ -1,6 +1,8 @@
 package movil.libronet.modelo
 
+import LocalDateAdapter
 import android.util.Log
+import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -8,11 +10,15 @@ import retrofit2.create
 class LibroNetRepository {
     val libroNetApi:LibroNetApi
     init {
+        val moshi = Moshi.Builder()
+            .add(LocalDateAdapter())
+            .build()
+
         libroNetApi = Retrofit.Builder()
             .baseUrl("http://10.0.2.2/ApiLibroNet/crud/")
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
-            .create()
+            .create(LibroNetApi::class.java)
     }
 
     //LIBROS
@@ -20,6 +26,8 @@ class LibroNetRepository {
         libroNetApi.consultarTodosLibros()
     suspend fun consultarLibro(id:Int):Libro =
         libroNetApi.consultarLibro(id)
+    suspend fun actualizarLibro(libro : Libro) =
+        libroNetApi.actualizarLibro(libro)
 
     //USUARIOS
     suspend fun consultarTodosUsuarios():List<Usuario> =
@@ -69,9 +77,12 @@ class LibroNetRepository {
             false
         }
     }
-    suspend fun insertarReserva(reserva: Reserva): Respuesta {
-        return libroNetApi.insertarReserva(reserva)
-    }
+    suspend fun insertarReserva(reserva: Reserva): Respuesta =
+        libroNetApi.insertarReserva(reserva)
+
+
+    suspend fun actualizarReserva(reserva:Reserva):Respuesta =
+        libroNetApi.actualizarReserva(reserva)
 
 
 }

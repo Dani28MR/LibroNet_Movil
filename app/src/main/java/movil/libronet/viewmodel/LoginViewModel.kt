@@ -30,7 +30,7 @@ class LoginViewModel():ViewModel () {
         viewModelScope.launch {
             try {
                 listaUsuarios = LibroNetRepository().consultarTodosUsuarios()
-                Log.d("Login", "Usuarios cargados: ${listaUsuarios.size}") // <- Log aquí
+                Log.d("Login", "Usuarios cargados: ${listaUsuarios.size}")
                 Log.d("Login", "Ejemplo de usuario: ${listaUsuarios.firstOrNull()?.email}")
                 lambdaExito()
             } catch (e: Exception) {
@@ -38,6 +38,14 @@ class LoginViewModel():ViewModel () {
                 lambdaError("Error al cargar usuarios: ${e.message}")
             }
         }
+    }
+
+    fun setLoadingState() {
+        _loginState.value = LoginResult.Loading
+    }
+
+    fun resetState() {
+        _loginState.value = LoginResult.Idle
     }
 
     fun validarLogin(email: String, password: String) {
