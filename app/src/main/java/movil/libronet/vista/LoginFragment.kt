@@ -88,7 +88,8 @@ class LoginFragment : Fragment(),NavegadorError {
                         updateUI(showProgress = false)
                     }
                     is LoginResult.Success -> {
-
+                        val imm = requireContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
+                        imm.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, 0)
                         sharedViewModel.setIdUsuario(result.usuario.idUsuario)
 
                         delay(2000)
