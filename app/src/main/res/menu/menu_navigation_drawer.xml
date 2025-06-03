@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title=" ">
-        <menu android:checkableBehavior="single">
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/librosFragment"
-                    android:icon="@drawable/icono_libro"
-                    android:title="Libros"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-                <item
-                    android:id="@+id/autorFragment"
-                    android:icon="@drawable/icono_autor"
-                    android:title="Autores"/>
+    <group
+        android:id="@+id/main_group"
+        android:checkableBehavior="single"
+        android:menuCategory="container">
 
-                <item
-                    android:id="@+id/editorialFragment"
-                    android:icon="@drawable/icono_editorial"
-                    android:title="Editoriales"/>
+        <item
+            android:id="@+id/librosFragment"
+            android:icon="@drawable/icono_libro"
+            android:title="Libros"
+            app:iconTint="?android:attr/textColorSecondary"/>
 
-                <item
-                    android:id="@+id/categoriaFragment"
-                    android:icon="@drawable/icono_categoria"
-                    android:title="Categorias"/>
-            </group>
-        </menu>
-    </item>
+        <item
+            android:id="@+id/autorFragment"
+            android:icon="@drawable/icono_autor"
+            android:title="Autores"
+            app:iconTint="?android:attr/textColorSecondary"/>
+
+        <item
+            android:id="@+id/editorialFragment"
+            android:icon="@drawable/icono_editorial"
+            android:title="Editoriales"
+            app:iconTint="?android:attr/textColorSecondary"/>
+
+        <item
+            android:id="@+id/categoriaFragment"
+            android:icon="@drawable/icono_categoria"
+            android:title="Categorías"
+            app:iconTint="?android:attr/textColorSecondary"/>
+    </group>
+
+
 
     <item
         android:id="@+id/detalleUsuarioFragment"
         android:icon="@drawable/icono_persona"
-        android:title="Mi perfil"/>
-
+        android:title="Mi perfil"
+        app:iconTint="?attr/colorPrimary"/>
 </menu>

@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/librosFragment"
         android:icon="@drawable/icono_libro"
-        android:title="Libros"/>
+        android:title="Libros"
+        app:iconTint="?attr/colorOnSurface"
+        app:itemTextColor="?attr/colorOnSurface"/>
 
     <item
         android:id="@+id/autorFragment"
         android:icon="@drawable/icono_autor"
-        android:title="Autores"/>
+        android:title="Autores"
+        app:iconTint="?attr/colorOnSurface"
+        app:itemTextColor="?attr/colorOnSurface"/>
 
     <item
         android:id="@+id/editorialFragment"
         android:icon="@drawable/icono_editorial"
-        android:title="Editoriales"/>
+        android:title="Editoriales"
+        app:iconTint="?attr/colorOnSurface"
+        app:itemTextColor="?attr/colorOnSurface"/>
 
     <item
         android:id="@+id/categoriaFragment"
         android:icon="@drawable/icono_categoria"
-        android:title="Categorias"/>
+        android:title="Categorías"
+        app:iconTint="?attr/colorOnSurface"
+        app:itemTextColor="?attr/colorOnSurface"/>
 
     <item
         android:id="@+id/detalleUsuarioFragment"
         android:icon="@drawable/icono_persona"
-        android:title="Mi perfil"/>
-
+        android:title="Perfil"
+        app:iconTint="?attr/colorOnSurface"
+        app:itemTextColor="?attr/colorOnSurface"/>
 </menu>

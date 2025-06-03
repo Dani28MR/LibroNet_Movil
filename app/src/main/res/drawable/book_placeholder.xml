@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="180dp"
+    android:viewportWidth="120"
+    android:viewportHeight="180"
+    android:tint="#6200EA">
+
+    <!-- Portada del libro -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M10,10 L110,10 L110,170 L10,170 Z"
+        android:strokeColor="#6200EA"
+        android:strokeWidth="2"/>
+    
+    <!-- Lomo del libro -->
+    <path
+        android:fillColor="#4000A0"
+        android:pathData="M10,10 L20,10 L20,170 L10,170 Z"/>
+    
+    <!-- Título decorativo -->
+    <path
+        android:fillColor="#6200EA"
+        android:pathData="M30,50 L90,50 L90,60 L30,60 Z"/>
+    <path
+        android:fillColor="#6200EA"
+        android:pathData="M30,70 L80,70 L80,80 L30,80 Z"/>
+</vector>

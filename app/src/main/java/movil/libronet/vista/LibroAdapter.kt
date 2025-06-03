@@ -25,6 +25,10 @@ class LibroAdapter(
             lambda(holder)
         }
     }
+    fun actualizarLista(nuevaLista: List<Libro>) {
+        libros = nuevaLista
+        notifyDataSetChanged()
+    }
 
     fun setListaLibros(l:List<Libro>){
         libros = l

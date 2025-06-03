@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_light"
+    android:padding="12dp">
 
-    <LinearLayout
-        android:id="@+id/capa2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lstLibros"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:padding="4dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_libro" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/material_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/lstLibros"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center"
+        android:background="@drawable/empty_state_background"
+        android:gravity="center"
+        android:text="No se encontraron libros"
+        android:textColor="#6200EA"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:drawableTop="@drawable/ic_empty_libros"
+        android:drawablePadding="16dp"
+        android:visibility="gone"
+        android:elevation="8dp"
+        android:stateListAnimator="@animator/elevation_anim"/>
 
 </FrameLayout>
-
-

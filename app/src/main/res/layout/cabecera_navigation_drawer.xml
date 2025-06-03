@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="180dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="?attr/colorPrimaryContainer">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="75dp"
+        app:cardBackgroundColor="?attr/colorPrimary"
+    app:strokeColor="@android:color/white"
+    app:strokeWidth="2dp"
+    app:cardElevation="6dp">
+
     <ImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:src="@drawable/icono"/>
-</FrameLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/iconoprincipal"
+        android:scaleType="fitCenter"
+    android:contentDescription="Logo de la aplicación"
+    android:padding="15dp"
+    app:tint="@null"/>
+</com.google.android.material.card.MaterialCardView>
+
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="LibroNet"
+android:textColor="?attr/colorOnPrimaryContainer"
+android:textSize="22sp"
+android:textStyle="bold"
+android:letterSpacing="0.03"
+android:layout_marginTop="16dp"
+android:shadowColor="#40000000"
+android:shadowDx="1"
+android:shadowDy="1"
+android:shadowRadius="2"/>
+
+    </LinearLayout>

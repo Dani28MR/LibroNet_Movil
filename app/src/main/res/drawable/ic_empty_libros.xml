@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#6200EA"> <!-- Color dinámico primario -->
+
+    <!-- Sombra bajo el libro -->
+    <path
+        android:pathData="M5 18v-8h14v8H5z"
+        android:fillColor="#33000000"
+        android:translateX="1"
+        android:translateY="1"/>
+
+    <!-- Libro principal -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M3,6v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2V6c0,-1.1 -0.9,-2 -2,-2H5C3.9,4 3,4.9 3,6zM5,6h14v2H5V6zM5,18v-8h14v8H5z"/>
+
+    <!-- Detalles del libro -->
+    <path
+        android:fillColor="#6200EA"
+        android:pathData="M8,12h8v2H8z"/>
+
+</vector>
