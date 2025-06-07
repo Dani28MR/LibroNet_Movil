@@ -137,13 +137,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="© 2023 LibroNet - Gestión de Bibliotecas"
+            android:layout_marginBottom="16dp"
+            android:text="© 2025 LibroNet - Gestión de Bibliotecas"
             android:textColor="@android:color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="16dp"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

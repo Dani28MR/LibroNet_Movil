@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_light"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_detalle_Usuario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/lbNombre"
@@ -141,11 +142,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:enabled="false"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lbEmail"
-            app:layout_constraintTop_toBottomOf="@+id/txtApellidos"
-            android:enabled="false"/>
+            app:layout_constraintTop_toBottomOf="@+id/txtApellidos" />
 
         <EditText
             android:id="@+id/txtTelefono"
@@ -178,11 +179,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:enabled="false"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lbRol"
-            app:layout_constraintTop_toBottomOf="@+id/txtDireccion"
-            android:enabled="false"/>
+            app:layout_constraintTop_toBottomOf="@+id/txtDireccion" />
 
         <EditText
             android:id="@+id/txtPassword"
@@ -203,6 +204,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:inputType="textPassword"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"

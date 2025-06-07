@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/material_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
+    android:background="@drawable/bg_gradient_light"
+    android:padding="12dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:id="@+id/lstEditoriales"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:clipToPadding="false"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="4dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_editorial" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvEmptyStateEditoriales"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center"
+        android:background="@drawable/empty_state_background"
+        android:drawablePadding="16dp"
+        android:drawableTop="@drawable/ic_empty_editoriales"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="No se encontraron editoriales"
+        android:textColor="#6200EA"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</FrameLayout>
