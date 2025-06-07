@@ -15,7 +15,7 @@ class LibroNetRepository {
             .build()
 
         libroNetApi = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2/ApiLibroNet/crud/")
+            .baseUrl("http://34.237.81.204/ApiLibroNet/crud/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(LibroNetApi::class.java)

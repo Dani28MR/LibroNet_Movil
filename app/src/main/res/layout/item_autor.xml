@@ -3,6 +3,68 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeColor="?attr/colorPrimary"
+    app:strokeWidth="0.5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtNombreAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtApellidosAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="8dp"
     android:layout_width="match_parent"
     android:layout_height="72dp">
@@ -59,4 +121,4 @@
             app:layout_constraintStart_toEndOf="@+id/lbApellidos"
             app:layout_constraintTop_toBottomOf="@+id/txtNombreAutor" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView> -->

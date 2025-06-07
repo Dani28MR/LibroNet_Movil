@@ -1,29 +1,28 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.LibroNet" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">#A9AAC7</item>
         <item name="colorPrimaryContainer">#F0F1FF</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorSecondary">#FFC107</item>
-        <item name="colorSecondaryContainer">#FFF4CC</item>
+        <item name="colorSecondaryContainer">#87879B</item>
         <item name="colorOnSecondary">#000000</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="android:statusBarColor">#7B7C99</item>
         <item name="android:navigationBarColor">#7B7C99</item>
 
-
-        <item name="colorOnSurface">@color/black</item>
-        <item name="colorSurface">@color/white</item>
-        <item name="colorOutline">#33000000</item>
-
-
-        <item name="actionMenuTextColor">?attr/colorOnSurface</item>
-        <item name="android:itemTextAppearance">@style/TextAppearance.LibroNet.Menu</item>
-        <item name="itemIconTint">?attr/colorOnSurface</item>
-
-        <!-- Toolbar -->
-        <item name="toolbarStyle">@style/Widget.LibroNet.Toolbar</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.LibroNet.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.LibroNet.BodyMedium</item>
     </style>
+
+    <style name="TextAppearance.LibroNet.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.LibroNet.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:lineSpacingExtra">3sp</item>
+    </style>
+
 
     <style name="Theme.LibroNet" parent="Base.Theme.LibroNet">
         <item name="colorSecondary">#FFC107</item>
@@ -44,4 +43,23 @@
         <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
     </style>
 
+    <style name="TextAppearance.LibroNet.Label" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Estilo opcional para los botones -->
+    <style name="Widget.LibroNet.Button" parent="Widget.Material3.Button">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <!-- Estilo opcional para TextInputEditText si quieres unificado -->
+    <style name="Widget.LibroNet.TextInput" parent="Widget.Material3.TextInputEditText.FilledBox">
+        <item name="android:textSize">14sp</item>
+        <item name="boxBackgroundColor">?attr/colorSurfaceVariant</item>
+    </style>
 </resources>
